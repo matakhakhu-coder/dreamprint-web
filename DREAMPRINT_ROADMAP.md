@@ -43,22 +43,29 @@ is functional in simulation mode and renders without error.
 
 *Fixed frame of the site. No content yet — just structure.*
 
-- [ ] `src/components/Navbar.js` — `render()` + `init()`
-  - [ ] Logo (SVG placeholder until asset arrives)
-  - [ ] Desktop nav links: Shop · How It Works · Gallery · About · Contact
-  - [ ] Mobile hamburger toggle — CSS-only animation, `init()` attaches click handler
-  - [ ] "Upload Your Art" CTA button (coral, top-right)
-  - [ ] WhatsApp floating action button (mobile only, fixed bottom-right, sage)
-  - [ ] Smooth scroll to anchor on nav link click
-  - [ ] Active state on current section (IntersectionObserver in `init()`)
-- [ ] `src/components/Footer.js` — `render()` + `init()`
-  - [ ] Brand name + tagline column
-  - [ ] Quick links column: Shop · How It Works · Upload · About · Contact
-  - [ ] Legal column: Privacy Policy · T&C · Refund Policy · Shipping Policy (all trigger LegalModals)
-  - [ ] Contact column: email · WhatsApp · social icon links
-  - [ ] CIPC reg no + POPIA notice line
-  - [ ] Copyright line (current year, computed in `render()`)
-- [ ] Wire Navbar and Footer into `main.js` render pass
+- [x] `src/components/Navbar.js` — `render()` + `init()`
+  - [x] Logo (SVG placeholder until asset arrives)
+  - [x] Desktop nav links: Shop · How It Works · Gallery · About · Contact
+  - [x] Mobile hamburger toggle — CSS-only animation, `init()` attaches click handler
+  - [x] "Upload Your Art" CTA button (coral, top-right)
+  - [x] WhatsApp floating action button (mobile only, fixed bottom-right, sage)
+  - [x] Smooth scroll to anchor on nav link click
+  - [x] Active state on current section (IntersectionObserver in `init()`)
+- [x] `src/components/Hero.js` — `render()` + `init()`
+  - [x] Full-viewport hero, emotional headline
+  - [x] Before/After artwork placeholder cards with CSS illustration
+  - [x] Dual CTA: "Upload Your Art" + "Chat on WhatsApp"
+  - [x] Floating stat cards (10–12 days, 100% custom)
+  - [x] Social proof row (avatar stack + star rating)
+  - [x] Scroll indicator with bounce animation
+- [x] `src/components/Footer.js` — `render()` + `init()`
+  - [x] Brand name + tagline column
+  - [x] Quick links column: Shop · How It Works · Upload · About · Contact
+  - [x] Legal column: Privacy Policy · T&C · Refund Policy · Shipping Policy (all trigger LegalModals)
+  - [x] Contact column: email · WhatsApp · social icon links
+  - [x] CIPC reg no + POPIA notice line
+  - [x] Copyright line (current year, computed in `render()`)
+- [x] Wire Navbar, Hero, and Footer into `main.js` render pass
 - [ ] Confirm layout renders correctly on 390px, 768px, 1280px, 1440px viewports
 
 **Gate:** Navbar and Footer render on staging. Mobile hamburger functions. All links present (anchors scroll to `#placeholder` without error).

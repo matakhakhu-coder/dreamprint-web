@@ -1,12 +1,13 @@
 import './style.css'
 import { SEOEngine } from '@/core/SEOEngine.js'
+import { render as renderNavbar, init as initNavbar } from '@/components/Navbar.js'
+import { render as renderHero,   init as initHero   } from '@/components/Hero.js'
+import { render as renderFooter, init as initFooter } from '@/components/Footer.js'
 
 /**
  * Single-pass string hydration pattern.
  * Rule: render() returns pure HTML strings — no DOM access, no side effects.
  *       init() fires after innerHTML is written — queries DOM, attaches listeners.
- *
- * Phase 0: shell only. Module imports are added phase by phase.
  */
 
 // ── Route detection ──────────────────────────────────────────────────────────
@@ -20,34 +21,24 @@ function isAdmin() {
 async function mountCustomer() {
   const app = document.getElementById('app')
 
-  // Placeholder shell until Phase 1 components are wired in
-  app.innerHTML = `
-    <div class="min-h-screen flex items-center justify-center bg-dp-cream">
-      <div class="text-center px-6">
-        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-dp-coral mb-6 shadow-cta">
-          <span class="text-white text-3xl font-display font-bold">DP</span>
-        </div>
-        <h1 class="font-display text-3xl font-bold text-dp-navy mb-3">
-          DreamPrint SA
-        </h1>
-        <p class="font-body text-dp-navy/70 max-w-sm mx-auto mb-8">
-          Custom-printed keepsakes from children's drawings.<br />
-          <span class="text-dp-coral font-medium">Platform initialising — Phase 0 substrate active.</span>
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dp-sage/10 text-dp-sage text-sm font-medium">
-            <span class="w-2 h-2 rounded-full bg-dp-sage animate-pulse"></span>
-            Simulation mode active
-          </span>
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dp-navy/5 text-dp-navy/60 text-sm font-medium">
-            manifest.js ✓ · flags.js ✓ · adapters ✓
-          </span>
-        </div>
-      </div>
-    </div>
-  `
+  // Phase 1: single-pass string hydration
+  // All render() calls concatenated → one innerHTML write → all init() calls in sequence
+  app.innerHTML = [
+    renderNavbar(),
+    renderHero(),
+    // Phase 2+ modules will be added here:
+    // renderProductShowcase(), renderHowItWorks(), renderGallery(),
+    // renderTestimonials(), renderAbout(), renderFAQ(),
+    // renderContactEngine(), renderConsentBanner(), renderLegalModals()
+    renderFooter(),
+  ].join('')
 
-  // Phase 0 init: apply SEO meta
+  // init() sequence — DOM is guaranteed written at this point
+  initNavbar()
+  initHero()
+  initFooter()
+
+  // Apply SEO meta
   SEOEngine.applyMeta({ page: 'home' })
 }
 

@@ -39,7 +39,7 @@ Before executing any directive, Claude must:
 | Phase | Name | Status |
 |-------|------|--------|
 | 0 | Substrate (Project Init, Tooling, Manifest, Flags) | **Complete** |
-| 1 | Core Layout (Navbar, Hero, Footer) | Pending |
+| 1 | Core Layout (Navbar, Hero, Footer) | **Complete** |
 | 2 | Product Showcase (ProductShowcase, ProductDetail) | Pending |
 | 3 | Upload Portal (UploadPortal — core feature) | Pending |
 | 4 | Content Sections (HowItWorks, Gallery, About, Testimonials, FAQ) | Pending |
@@ -55,10 +55,10 @@ Before executing any directive, Claude must:
 
 | Key | Value |
 |-----|-------|
-| **Staging URL** | TBC — Vercel project not yet created |
+| **Staging URL** | https://dreamprint-web.vercel.app |
 | **Production domain** | `dreamprintsa.co.za` |
-| **Vercel account** | TBC |
-| **Linked repo** | TBC — auto-deploys on `git push` to `main` |
+| **Vercel account** | matakhakhu-coder |
+| **Linked repo** | https://github.com/matakhakhu-coder/dreamprint-web — auto-deploys on `git push` to `main` |
 | **X-Robots-Tag** | `noindex, nofollow, noarchive, nosnippet` (staging — edge-bound via `vercel.json`) |
 | **robots.txt** | Staging mode — `Disallow: /` |
 | **sitemap.xml** | Not yet generated |

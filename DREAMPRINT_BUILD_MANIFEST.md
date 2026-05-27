@@ -10,7 +10,7 @@ are received, then mirror the changes into `src/core/manifest.js`.
 | Phase | Name | Status |
 |-------|------|--------|
 | 0 | Substrate (Project Init, Tooling, Manifest, Flags) | **Complete** |
-| 1 | Core Layout (Navbar, Hero, Footer) | Pending |
+| 1 | Core Layout (Navbar, Hero, Footer) | **Complete** |
 | 2 | Product Showcase (ProductShowcase, ProductDetail) | Pending |
 | 3 | Upload Portal (UploadPortal — core feature) | Pending |
 | 4 | Content Sections (HowItWorks, Gallery, About, Testimonials, FAQ) | Pending |
