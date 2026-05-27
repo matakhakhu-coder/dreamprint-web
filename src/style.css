@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dp-cream font-body text-dp-navy antialiased;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Minimum tap target for interactive elements */
+  button,
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove tap highlight on mobile */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-dp-coral text-white font-body font-semibold text-base shadow-cta transition-all duration-200;
+    @apply hover:bg-dp-coral-dark hover:shadow-lg active:scale-95;
+    min-height: 48px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-dp-coral text-dp-coral font-body font-semibold text-base transition-all duration-200;
+    @apply hover:bg-dp-coral hover:text-white active:scale-95;
+    min-height: 48px;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-dp-sage text-white font-body font-semibold text-base transition-all duration-200;
+    @apply hover:bg-dp-sage-light active:scale-95;
+    min-height: 48px;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card transition-shadow duration-200;
+    @apply hover:shadow-card-hover;
+  }
+
+  .section-container {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-heading {
+    @apply font-display font-bold text-dp-navy;
+  }
+}
