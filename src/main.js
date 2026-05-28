@@ -5,6 +5,11 @@ import { render as renderHero,           init as initHero           } from '@/co
 import { render as renderProductShowcase, init as initProductShowcase } from '@/modules/ProductShowcase.js'
 import {                                  init as initProductDetail  } from '@/modules/ProductDetail.js'
 import { render as renderUploadPortal,   init as initUploadPortal   } from '@/modules/UploadPortal.js'
+import { render as renderHowItWorks                                 } from '@/modules/HowItWorks.js'
+import { render as renderGallery                                    } from '@/modules/Gallery.js'
+import { render as renderAbout                                      } from '@/components/About.js'
+import { render as renderTestimonials                               } from '@/modules/Testimonials.js'
+import { render as renderFAQ,            init as initFAQ            } from '@/modules/FAQ.js'
 import { render as renderFooter,         init as initFooter         } from '@/components/Footer.js'
 
 /**
@@ -31,10 +36,13 @@ async function mountCustomer() {
     renderHero(),
     renderProductShowcase(),
     renderUploadPortal(),
-    // Phase 4+ modules will be added here:
-    // renderHowItWorks(), renderGallery(), renderTestimonials(),
-    // renderAbout(), renderFAQ(), renderContactEngine(),
-    // renderConsentBanner(), renderLegalModals()
+    renderHowItWorks(),
+    renderGallery(),
+    renderAbout(),
+    renderTestimonials(),
+    renderFAQ(),
+    // Phase 5+ modules will be added here:
+    // renderContactEngine(), renderConsentBanner(), renderLegalModals()
     renderFooter(),
   ].join('')
 
@@ -44,6 +52,7 @@ async function mountCustomer() {
   initProductShowcase()
   initProductDetail()
   initUploadPortal()
+  initFAQ()
   initFooter()
 
   // Apply SEO meta
