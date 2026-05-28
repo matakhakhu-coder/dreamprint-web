@@ -1,8 +1,11 @@
 import './style.css'
 import { SEOEngine } from '@/core/SEOEngine.js'
-import { render as renderNavbar, init as initNavbar } from '@/components/Navbar.js'
-import { render as renderHero,   init as initHero   } from '@/components/Hero.js'
-import { render as renderFooter, init as initFooter } from '@/components/Footer.js'
+import { render as renderNavbar,         init as initNavbar         } from '@/components/Navbar.js'
+import { render as renderHero,           init as initHero           } from '@/components/Hero.js'
+import { render as renderProductShowcase, init as initProductShowcase } from '@/modules/ProductShowcase.js'
+import {                                  init as initProductDetail  } from '@/modules/ProductDetail.js'
+import { render as renderUploadPortal,   init as initUploadPortal   } from '@/modules/UploadPortal.js'
+import { render as renderFooter,         init as initFooter         } from '@/components/Footer.js'
 
 /**
  * Single-pass string hydration pattern.
@@ -26,16 +29,21 @@ async function mountCustomer() {
   app.innerHTML = [
     renderNavbar(),
     renderHero(),
-    // Phase 2+ modules will be added here:
-    // renderProductShowcase(), renderHowItWorks(), renderGallery(),
-    // renderTestimonials(), renderAbout(), renderFAQ(),
-    // renderContactEngine(), renderConsentBanner(), renderLegalModals()
+    renderProductShowcase(),
+    renderUploadPortal(),
+    // Phase 4+ modules will be added here:
+    // renderHowItWorks(), renderGallery(), renderTestimonials(),
+    // renderAbout(), renderFAQ(), renderContactEngine(),
+    // renderConsentBanner(), renderLegalModals()
     renderFooter(),
   ].join('')
 
   // init() sequence — DOM is guaranteed written at this point
   initNavbar()
   initHero()
+  initProductShowcase()
+  initProductDetail()
+  initUploadPortal()
   initFooter()
 
   // Apply SEO meta
