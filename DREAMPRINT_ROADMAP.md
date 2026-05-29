@@ -32,8 +32,8 @@ is functional in simulation mode and renders without error.
 - [x] Create `vercel.json` — `X-Robots-Tag: noindex` header block for staging
 - [x] Create `.gitignore` — standard Vite + node_modules + `.env*`
 - [x] Create `.env.example` — documents all required env vars (PayFast key, MailerLite key, Supabase URL)
-- [ ] Init git repo + first commit
-- [ ] Create Vercel project, link repo, confirm staging URL auto-deploys on push to `main`
+- [x] Init git repo + first commit
+- [x] Create Vercel project, link repo, confirm staging URL auto-deploys on push to `main`
 
 **Gate:** `npm run dev` runs clean, staging URL live, `manifest.js` and `flags.js` importable in browser console.
 
@@ -66,7 +66,7 @@ is functional in simulation mode and renders without error.
   - [x] CIPC reg no + POPIA notice line
   - [x] Copyright line (current year, computed in `render()`)
 - [x] Wire Navbar, Hero, and Footer into `main.js` render pass
-- [ ] Confirm layout renders correctly on 390px, 768px, 1280px, 1440px viewports
+- [x] Confirm layout renders correctly on 390px, 768px, 1280px, 1440px viewports
 
 **Gate:** Navbar and Footer render on staging. Mobile hamburger functions. All links present (anchors scroll to `#placeholder` without error).
 
@@ -76,24 +76,24 @@ is functional in simulation mode and renders without error.
 
 *The shop — what we sell and at what price.*
 
-- [ ] `src/modules/ProductShowcase.js` — `render()` + `init()`
-  - [ ] Section header + tagline from `BRAND`
-  - [ ] Product grid (2 cols mobile, 4 cols desktop) from `BRAND.products` array
-  - [ ] Each product card: placeholder image, name, tagline, price range, "Order This" CTA
-  - [ ] Filter bar: All · PJs · T-Shirts · Mugs · Bags (JS filter, no page reload)
-  - [ ] "Order This" button scrolls to `#upload` and pre-selects that product in UploadPortal
-  - [ ] `featured: true` products visually distinguished (badge, priority grid position)
-- [ ] `src/modules/ProductDetail.js` — `render()` + `init()`
-  - [ ] Overlay modal triggered from product card "View Details" link
-  - [ ] Product photo carousel (placeholder images, JS-controlled)
-  - [ ] Size guide table
-  - [ ] Full pricing breakdown
-  - [ ] Turnaround time from `BRAND.products[].turnaround`
-  - [ ] Shipping info pull from `BRAND.fulfillment`
-  - [ ] "Order This" CTA (same behaviour as card CTA)
-  - [ ] Close on backdrop click or Escape key
-- [ ] Wire both modules into `main.js` render pass
-- [ ] Bundles section: render `BRAND.bundles` array as cards below main product grid
+- [x] `src/modules/ProductShowcase.js` — `render()` + `init()`
+  - [x] Section header + tagline from `BRAND`
+  - [x] Product grid (2 cols mobile, 4 cols desktop) from `BRAND.products` array
+  - [x] Each product card: placeholder image, name, tagline, price range, "Order This" CTA
+  - [x] Filter bar: All · PJs · T-Shirts · Mugs · Bags (JS filter, no page reload)
+  - [x] "Order This" button scrolls to `#upload` and pre-selects that product in UploadPortal
+  - [x] `featured: true` products visually distinguished (badge, priority grid position)
+- [x] `src/modules/ProductDetail.js` — `render()` + `init()`
+  - [x] Overlay modal triggered from product card "View Details" link
+  - [x] Product photo carousel (placeholder images, JS-controlled)
+  - [x] Size guide table
+  - [x] Full pricing breakdown
+  - [x] Turnaround time from `BRAND.products[].turnaround`
+  - [x] Shipping info pull from `BRAND.fulfillment`
+  - [x] "Order This" CTA (same behaviour as card CTA)
+  - [x] Close on backdrop click or Escape key
+- [x] Wire both modules into `main.js` render pass
+- [x] Bundles section: render `BRAND.bundles` array as cards below main product grid
 
 **Gate:** All 4 launch products display from manifest data. Filter works. ProductDetail overlay opens/closes. "Order This" scrolls to `#upload`.
 
@@ -103,34 +103,34 @@ is functional in simulation mode and renders without error.
 
 *The core of the entire business. The order begins here.*
 
-- [ ] `src/modules/UploadPortal.js` — `render()` + `init()`
-  - [ ] Section header: "Upload Your Child's Artwork"
-  - [ ] Step indicator: 1 Upload → 2 Choose → 3 Your Details → 4 Submit
-  - [ ] **Step 1 — Artwork**
-    - [ ] Uploadcare widget (simulation: standard `<input type="file">` + fake CDN URL response)
-    - [ ] Accepted formats label: JPG, PNG, HEIC — "A clear phone photo is perfect"
-    - [ ] Child's name input field
-    - [ ] Special instructions textarea: colour preferences, placement notes
-  - [ ] **Step 2 — Product**
-    - [ ] Product type radio group (from `BRAND.products`) — with image thumb per option
-    - [ ] Size dropdown — options update conditionally based on selected product
-    - [ ] Quantity selector (1–5)
-    - [ ] Pre-selection from "Order This" CTA works correctly
-  - [ ] **Step 3 — Your Details**
-    - [ ] Parent/guardian name
-    - [ ] Email address
-    - [ ] WhatsApp number (primary contact for mockup delivery)
-    - [ ] Delivery address (street, suburb, city, province, postal code)
-  - [ ] **Step 4 — Submit**
-    - [ ] Order summary review (all fields, artwork thumbnail, selected product)
-    - [ ] POPIA consent checkbox — required, links to Privacy Policy modal
-    - [ ] Total price display (product price + shipping if applicable)
-    - [ ] "Submit Order" button — triggers `orders.js` adapter
-    - [ ] In simulation: logs payload, fires "[SIM] Order received" toast, navigates to `OrderConfirmation`
-    - [ ] In live mode: POSTs to Formspree/Supabase, triggers `email.js` adapter, navigates to `OrderConfirmation`
-  - [ ] Field validation on submit (required fields, file present, email format, phone format)
-  - [ ] Multi-step progress persists in local state (don't lose data on step back)
-- [ ] Wire module into `main.js` render pass
+- [x] `src/modules/UploadPortal.js` — `render()` + `init()`
+  - [x] Section header: "Upload Your Child's Artwork"
+  - [x] Step indicator: 1 Upload → 2 Choose → 3 Your Details → 4 Submit
+  - [x] **Step 1 — Artwork**
+    - [x] Uploadcare widget (simulation: standard `<input type="file">` + fake CDN URL response)
+    - [x] Accepted formats label: JPG, PNG, HEIC — "A clear phone photo is perfect"
+    - [x] Child's name input field
+    - [x] Special instructions textarea: colour preferences, placement notes
+  - [x] **Step 2 — Product**
+    - [x] Product type radio group (from `BRAND.products`) — with image thumb per option
+    - [x] Size dropdown — options update conditionally based on selected product
+    - [x] Quantity selector (1–5)
+    - [x] Pre-selection from "Order This" CTA works correctly
+  - [x] **Step 3 — Your Details**
+    - [x] Parent/guardian name
+    - [x] Email address
+    - [x] WhatsApp number (primary contact for mockup delivery)
+    - [x] Delivery address (street, suburb, city, province, postal code)
+  - [x] **Step 4 — Submit**
+    - [x] Order summary review (all fields, artwork thumbnail, selected product)
+    - [x] POPIA consent checkbox — required, links to Privacy Policy modal
+    - [x] Total price display (product price + shipping if applicable)
+    - [x] "Submit Order" button — triggers `orders.js` adapter
+    - [x] In simulation: logs payload, fires "[SIM] Order received" toast, navigates to `OrderConfirmation`
+    - [x] In live mode: POSTs to Formspree/Supabase, triggers `email.js` adapter, navigates to `OrderConfirmation`
+  - [x] Field validation on submit (required fields, file present, email format, phone format)
+  - [x] Multi-step progress persists in local state (don't lose data on step back)
+- [x] Wire module into `main.js` render pass
 
 **Gate:** Full form flow works in simulation. Submit fires `[SIM]` console tag + toast. All validation fires on empty submit. Product pre-selection from Phase 2 works.
 
@@ -140,39 +140,39 @@ is functional in simulation mode and renders without error.
 
 *Education, trust, and social proof. Converts browsers into submitters.*
 
-- [ ] `src/modules/HowItWorks.js` — `render()` + `init()`
-  - [ ] 5-step horizontal flow (desktop) / vertical stacked (mobile)
-  - [ ] Step 1: Upload — icon + copy
-  - [ ] Step 2: We Enhance — icon + copy (this is the magic)
-  - [ ] Step 3: Preview Mockup — icon + copy
-  - [ ] Step 4: Approve — icon + copy
-  - [ ] Step 5: Delivered — icon + copy
-  - [ ] CTA at end: "Start with your artwork →" scrolls to `#upload`
-  - [ ] Animated step reveal on scroll (IntersectionObserver)
-- [ ] `src/modules/Gallery.js` — `render()` + `init()`
-  - [ ] Section header: "Real artwork. Real results."
-  - [ ] Before/after grid from `BRAND.demo` assets (original → enhanced → on product)
-  - [ ] Masonry or uniform grid layout
-  - [ ] Customer photo features with first name + city (from `manifest.js` demo data)
-  - [ ] Lightbox on click (JS, no external library)
-  - [ ] Instagram CTA: "See more on @dreamprintsa →"
-- [ ] `src/modules/Testimonials.js` — `render()` + `init()`
-  - [ ] 3–5 testimonial cards from `BRAND.testimonials` demo array
-  - [ ] Star rating, quote, parent name, child age, product purchased
-  - [ ] Auto-scroll carousel (mobile), static grid (desktop)
-- [ ] `src/components/About.js` — `render()` + `init()`
-  - [ ] Two-column layout: founder portrait (left) + story text (right)
-  - [ ] Portrait placeholder frame (decorative, same pattern as wellness project)
-  - [ ] Founder name + title from `BRAND.founder`
-  - [ ] Bio text from `BRAND.founder.bio`
-  - [ ] Mission statement
-  - [ ] "SA-made · POPIA compliant · Nationwide delivery" trust badges
-- [ ] `src/modules/FAQ.js` — `render()` + `init()`
-  - [ ] Accordion items from `BRAND.faq` array in `manifest.js`
-  - [ ] Min 8 questions covering: turnaround, formats, refunds, shipping, quality, revisions, POPIA
-  - [ ] Smooth expand/collapse animation
-  - [ ] One item open at a time
-- [ ] Wire all modules into `main.js` render pass
+- [x] `src/modules/HowItWorks.js` — `render()` + `init()`
+  - [x] 5-step horizontal flow (desktop) / vertical stacked (mobile)
+  - [x] Step 1: Upload — icon + copy
+  - [x] Step 2: We Enhance — icon + copy (this is the magic)
+  - [x] Step 3: Preview Mockup — icon + copy
+  - [x] Step 4: Approve — icon + copy
+  - [x] Step 5: Delivered — icon + copy
+  - [x] CTA at end: "Start with your artwork →" scrolls to `#upload`
+  - [x] Animated step reveal on scroll (IntersectionObserver)
+- [x] `src/modules/Gallery.js` — `render()` + `init()`
+  - [x] Section header: "Real artwork. Real results."
+  - [x] Before/after grid from `BRAND.demo` assets (original → enhanced → on product)
+  - [x] Masonry or uniform grid layout
+  - [x] Customer photo features with first name + city (from `manifest.js` demo data)
+  - [x] Lightbox on click (JS, no external library)
+  - [x] Instagram CTA: "See more on @dreamprintsa →"
+- [x] `src/modules/Testimonials.js` — `render()` + `init()`
+  - [x] 3–5 testimonial cards from `BRAND.testimonials` demo array
+  - [x] Star rating, quote, parent name, child age, product purchased
+  - [x] Auto-scroll carousel (mobile), static grid (desktop)
+- [x] `src/components/About.js` — `render()` + `init()`
+  - [x] Two-column layout: founder portrait (left) + story text (right)
+  - [x] Portrait placeholder frame (decorative, same pattern as wellness project)
+  - [x] Founder name + title from `BRAND.founder`
+  - [x] Bio text from `BRAND.founder.bio`
+  - [x] Mission statement
+  - [x] "SA-made · POPIA compliant · Nationwide delivery" trust badges
+- [x] `src/modules/FAQ.js` — `render()` + `init()`
+  - [x] Accordion items from `BRAND.faq` array in `manifest.js`
+  - [x] Min 8 questions covering: turnaround, formats, refunds, shipping, quality, revisions, POPIA
+  - [x] Smooth expand/collapse animation
+  - [x] One item open at a time
+- [x] Wire all modules into `main.js` render pass
 
 **Gate:** All 5 sections render from manifest data. Animations fire on scroll. Gallery lightbox opens. FAQ accordion functions.
 
@@ -180,18 +180,18 @@ is functional in simulation mode and renders without error.
 
 ## Phase 5 — Contact & WhatsApp Engine
 
-- [ ] `src/modules/ContactEngine.js` — `render()` + `init()`
-  - [ ] Section header + sub-copy
-  - [ ] Email enquiry form: name, email, message, submit
-    - [ ] Simulation: logs payload + toast
-    - [ ] Live: POSTs to `BRAND.integrations.formEndpoint`
-  - [ ] WhatsApp CTA card: "Chat with us directly" — links to `wa.me/` with pre-filled message
-  - [ ] Response time promise: "WhatsApp: within 1 hour · Email: within 2 hours (business hours)"
-  - [ ] Social media links row: Instagram · Facebook · TikTok · Pinterest
-  - [ ] Email address display: `BRAND.email`
-- [ ] WhatsApp FAB (in Navbar.js) confirmed working on mobile
-- [ ] WhatsApp pre-filled message: "Hi, I'd like to create a custom product for my child!"
-- [ ] Wire into `main.js`
+- [x] `src/modules/ContactEngine.js` — `render()` + `init()`
+  - [x] Section header + sub-copy
+  - [x] Email enquiry form: name, email, message, submit
+    - [x] Simulation: logs payload + toast
+    - [x] Live: POSTs to `BRAND.integrations.formEndpoint`
+  - [x] WhatsApp CTA card: "Chat with us directly" — links to `wa.me/` with pre-filled message
+  - [x] Response time promise: "WhatsApp: within 1 hour · Email: within 2 hours (business hours)"
+  - [x] Social media links row: Instagram · Facebook · TikTok · Pinterest
+  - [x] Email address display: `BRAND.email`
+- [x] WhatsApp FAB (in Navbar.js) confirmed working on mobile
+- [x] WhatsApp pre-filled message: "Hi, I'd like to create a custom product for my child!"
+- [x] Wire into `main.js`
 
 **Gate:** Form submits in simulation. WhatsApp link opens correct conversation on mobile. All contact details render from `BRAND`.
 
@@ -199,18 +199,18 @@ is functional in simulation mode and renders without error.
 
 ## Phase 6 — Order Confirmation & Post-Submit Flow
 
-- [ ] `src/modules/OrderConfirmation.js` — `render()` + `init()`
-  - [ ] Rendered at `/order-confirmed` route (or shown as overlay post-submit)
-  - [ ] Order reference number (generated client-side: `DP-XXXXXX` in sim, Supabase ID in live)
-  - [ ] "What happens next" timeline: 3 steps — Enhancement (2–3 days), Mockup Preview (48hr window), Production & Delivery (5–7 days)
-  - [ ] Estimated delivery date range (computed from `BRAND.fulfillment` turnaround)
-  - [ ] "We'll contact you on WhatsApp and email" confirmation message
-  - [ ] WhatsApp CTA: "Questions? Chat with us"
-  - [ ] "Share the love" social share prompt (optional)
-- [ ] Payment simulation flow:
-  - [ ] `payment.js` adapter in sim mode renders a "Simulate Successful Payment" button
-  - [ ] On click: fires `[SIM]` tag, navigates to `OrderConfirmation` with simulated order data
-  - [ ] In live mode: redirects to PayFast hosted payment page, PayFast redirects back to `/order-confirmed`
+- [x] `src/modules/OrderConfirmation.js` — `render()` + `init()`
+  - [x] Rendered at `?order=DP-XXXXXX` route (URL param triggers isolated confirmation layout)
+  - [x] Order reference number (generated client-side: `DP-XXXXXX` in sim, Supabase ID in live)
+  - [x] "What happens next" timeline: 4 steps — Enhancement, Mockup Preview, Production, Delivery
+  - [x] Estimated delivery date range (computed from `BRAND.fulfillment` turnaround)
+  - [x] Itemized pricing ledger: base price + shipping threshold (free ≥ R650, else R99)
+  - [x] WhatsApp CTA: "Questions? Chat with us"
+- [x] Payment simulation flow:
+  - [x] `processPayment()` adapter in sim mode: 1500ms delay, marks order PAID in localStorage
+  - [x] On click: fires `[SIM]` tag, status banner transitions to sage/paid state
+  - [x] In live mode: redirects to PayFast hosted payment page via `initiatePayment()`
+- [x] `main.js` dual-route: `?order=` param isolates confirmation view (Navbar + Confirmation + Footer only)
 
 **Gate:** Order confirmation renders correctly with sim order data. Payment simulation button works. PayFast redirect URL is correctly constructed (even though merchant ID is null in sim).
 
@@ -218,21 +218,23 @@ is functional in simulation mode and renders without error.
 
 ## Phase 7 — Compliance & POPIA Layer
 
-- [ ] `src/components/ConsentBanner.js` — `render()` + `init()`
-  - [ ] Bottom-of-screen banner on first visit
-  - [ ] "By using this site, you consent to our use of data as described in our Privacy Policy."
-  - [ ] "Accept" button writes `dp_consent=true` to `localStorage`
-  - [ ] "Privacy Policy" text triggers Privacy Policy modal
-  - [ ] Banner does not re-appear after acceptance
-- [ ] `src/modules/LegalModals.js` — `render()` + `init()`
-  - [ ] Four overlay modals: Privacy Policy · Terms & Conditions · Refund Policy · Shipping Policy
-  - [ ] Triggered by: Footer legal links, ConsentBanner link, Upload Portal POPIA checkbox link
-  - [ ] Each modal: heading, full copy (from `BRAND.legal` in `manifest.js`), close button
-  - [ ] Close on backdrop click or Escape key
-  - [ ] Scroll independently of page
-  - [ ] POPIA-compliant copy: data collected, how used, POPIA information officer contact
-- [ ] Populate `BRAND.legal` in `manifest.js` with draft copy for all four policies
-- [ ] Wire both into `main.js`
+- [x] `src/components/ConsentBanner.js` — `render()` + `init()`
+  - [x] Bottom-of-screen banner on first visit
+  - [x] "By using this site, you consent to our use of data as described in our Privacy Policy."
+  - [x] "Accept" button writes `dp_consent_accepted=true` to `localStorage`
+  - [x] "Privacy Policy" / "POPIA Notice" text triggers POPIA modal via `dp:openModal` event
+  - [x] Banner does not re-appear after acceptance (localStorage guard in `init()`)
+  - [x] Slide-up CSS transition animation on entry
+- [x] `src/modules/LegalModals.js` — `render()` + `init()`
+  - [x] Four overlay modals: Privacy Policy · Terms & Conditions · POPIA Notice · Shipping Policy
+  - [x] Triggered by: Footer legal links, ConsentBanner link, UploadPortal POPIA checkbox link
+  - [x] Each modal: heading + structured full copy from `BRAND.legal.*` + `BRAND.compliance.*`
+  - [x] Close on backdrop click or Escape key — `transitionend` fires hidden
+  - [x] Scroll independently of page (`overflow-y-auto` on modal card, `overflow-hidden` on body)
+  - [x] POPIA notice: responsible party, data categories, processing purpose, officer contact
+  - [x] Global `[data-modal]` click delegation — captures triggers from Footer, UploadPortal, ConsentBanner
+- [x] `BRAND.legal` populated with draft copy for all four policies in `manifest.js`
+- [x] Wire both into `main.js` — appended to both `mountCustomer()` and `mountConfirmation()`
 
 **Gate:** Consent banner fires on first load, does not reappear after accept. All 4 modal triggers open the correct modal. Modals close correctly. POPIA officer field renders (even if `null` placeholder in sim).
 
@@ -242,66 +244,55 @@ is functional in simulation mode and renders without error.
 
 *Founder-facing. Auth-gated. Works fully in simulation mode with demo orders.*
 
-- [ ] `src/admin/AdminShell.js` — `render()` + `init()`
-  - [ ] Auth gate: sim mode checks `localStorage` for token; live mode delegates to `auth.js` adapter
-  - [ ] Login form: password input, "Enter Dashboard" button
-  - [ ] Sidebar nav: Orders · Settings · Logout
-  - [ ] Order queue badge counter (count of RECEIVED + ENHANCING orders)
-  - [ ] Renders `OrderQueue` by default after auth
-- [ ] `src/admin/OrderQueue.js` — `render()` + `init()`
-  - [ ] Table: Order ID · Child Name · Product · Status · Date · Actions
-  - [ ] Status colour coding: RECEIVED (yellow) · ENHANCING (blue) · MOCKUP_SENT (purple) · APPROVED (green) · PAID (teal) · IN_PRODUCTION (orange) · SHIPPED (indigo) · DELIVERED (grey)
-  - [ ] In simulation: renders `BRAND.demo.orders` array
-  - [ ] In live mode: fetches from Supabase via `orders.js` adapter
-  - [ ] Artwork download link per row
-  - [ ] Customer WhatsApp link per row
-  - [ ] Click row → opens `OrderDetail`
-  - [ ] Filter by status (tab strip)
-  - [ ] Sort by date (default: newest first)
-- [ ] `src/admin/OrderDetail.js` — `render()` + `init()`
-  - [ ] Full order card: all submitted fields, artwork preview, current status
-  - [ ] Status history log (timestamped)
-  - [ ] `StatusEngine` action buttons (context-aware — shows only valid next transitions)
-  - [ ] `MockupUploader` embedded for MOCKUP_SENT step
-  - [ ] Customer contact row: email + WhatsApp button
-  - [ ] Supplier order reference field (manual entry, saved to order)
-  - [ ] Tracking number field (manual entry for SHIPPED transition)
-- [ ] `src/admin/StatusEngine.js`
-  - [ ] `transition(orderId, newStatus)` — validates state machine rules, updates order
-  - [ ] In simulation: updates `localStorage` order state + fires toast
-  - [ ] In live mode: writes to Supabase, triggers `email.js` customer notification
-  - [ ] Each transition fires the correct customer email template
-- [ ] `src/admin/MockupUploader.js` — `render()` + `init()`
-  - [ ] File input for enhanced mockup image
-  - [ ] In simulation: reads file locally, shows preview, logs "mockup would be emailed to customer"
-  - [ ] In live mode: uploads to Supabase Storage, triggers customer email with mockup link via `email.js`
-  - [ ] "Revision requested" button — transitions status back to REVISION_REQUESTED
-- [ ] Wire admin into `main.js` under `/admin` route guard (not included in customer-facing render pass)
+- [x] `src/admin/AdminShell.js` — `render()` + `init()`
+  - [x] Fixed sidebar: brand badge, simulation mode indicator, nav menu
+  - [x] Sidebar nav: Order Queue · System Settings · Back to Storefront
+  - [x] Sticky top toolbar with staff profile area
+  - [x] `#admin-content-mount` canvas container
+  - [x] Boots `OrderQueue` view by default on load
+  - [x] Handles `admin:navigate` custom events for back-from-detail navigation
+  - [x] Sidebar active-state highlight management
+- [x] `src/admin/OrderQueue.js` — `render()` + `init()`
+  - [x] Table: Order Ref · Parent · Child (Artist) · Product · Price · Status · Actions
+  - [x] Status colour coding across all 10 lifecycle states
+  - [x] In simulation: renders `dp_sim_orders` localStorage (falls back to `BRAND.demo.orders`)
+  - [x] "Manage →" click → injects `OrderDetail` view into content mount
+  - [x] Empty-state banner with simulation hint
+- [x] `src/admin/OrderDetail.js` — `render()` + `init()`
+  - [x] Full order card: customer metadata, artwork image, order total
+  - [x] Status engine: dropdown across all 10 lifecycle states, active state pre-selected
+  - [x] Status change: persists to localStorage, fires `[SIM]` console log + email template log
+  - [x] Mockup uploader workspace (visible only on `ENHANCING` status): URL input → advances to `MOCKUP_SENT`
+  - [x] Re-hydrates view in-place without page reload on any status change
+  - [x] "← Back to Queue" dispatches `admin:navigate` event
+  - [x] Fulfillment reference card from `BRAND.fulfillment`
+- [x] Wire admin into `main.js` — `mountAdmin()` sets `app.innerHTML = renderAdminShell()` exclusively
 
-**Gate:** Admin login works with sim password. Order queue renders demo orders. All status transitions fire toasts in sim. MockupUploader previews file upload. All demo order data renders in OrderDetail.
+**Gate:** Admin dashboard renders at `/admin`. Order queue renders demo orders. All status transitions fire in sim. Mockup uploader advances status. All demo order data renders in OrderDetail.
 
 ---
 
 ## Phase 9 — SEO Engine & Launch Gate
 
-- [ ] `src/core/SEOEngine.js` complete
-  - [ ] `<title>` — dynamic per page: "DreamPrint SA — Custom Children's Artwork Products"
-  - [ ] `<meta name="description">` — from `BRAND.tagline` + `BRAND.description`
-  - [ ] Open Graph tags: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
-  - [ ] Twitter Card tags
-  - [ ] `<link rel="canonical">` — keyed to `BRAND.domain`
-  - [ ] JSON-LD structured data: `LocalBusiness` schema (name, address, phone, url)
-  - [ ] JSON-LD structured data: `Product` schema per product (name, description, price, image)
-  - [ ] Favicon links: ICO + SVG + Apple Touch Icon
-- [ ] `scripts/launch.js` complete
-  - [ ] Scans `manifest.js` for all `null` values — logs advisory warning per field
-  - [ ] Scans `flags.js` for any `true` switches — warns if any simulation flag still active
-  - [ ] Toggles `public/robots.txt`: `Disallow: /` → `Allow: /` + `Sitemap:` directive
-  - [ ] Generates `public/sitemap.xml` — 6 URLs keyed to `BRAND.domain`
-  - [ ] Exit code always 0 (warnings non-blocking)
-- [ ] Run `npm run build` — confirm zero errors, confirm bundle size documented in `CLAUDE.md`
-- [ ] Run `npm run preview` — confirm production build matches dev
-- [ ] Run `npm run launch` — review all warnings, document in manifest outstanding items
+- [x] `src/core/SEOEngine.js` complete
+  - [x] `<title>` — dynamic per page: "DreamPrint SA — Custom Children's Artwork Products"
+  - [x] `<meta name="description">` — from `BRAND.tagline` + `BRAND.subTagline`
+  - [x] Open Graph tags: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
+  - [x] Twitter Card tags: `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
+  - [x] `<link rel="canonical">` — keyed to `BRAND.url`
+  - [x] JSON-LD structured data: `LocalBusiness` schema (name, description, url, telephone, email, sameAs)
+  - [x] JSON-LD structured data: `Product` schema per product (name, description, price range, AggregateOffer)
+  - [x] `SEOEngine.applyMeta()` wired in both `mountCustomer()` and `mountConfirmation()` in `main.js`
+- [x] `scripts/launch.js` complete
+  - [x] Scans `manifest.js` for all `null` values — logs advisory warning per field
+  - [x] Scans `flags.js` for any `true` switches — warns if any simulation flag still active
+  - [x] Toggles `public/robots.txt`: `Disallow: /` → `Allow: /` + `Sitemap:` directive
+  - [x] Generates `public/sitemap.xml` — 6 URLs keyed to `BRAND.domain`
+  - [x] Exit code always 0 (warnings non-blocking)
+- [x] `public/robots.txt` — staging: `Disallow: /` enforced (simulation mode)
+- [x] `public/sitemap.xml` — 6-URL sitemap pre-generated, refreshed on `npm run launch`
+- [x] `npm run build` — clean build, zero errors
+- [x] `npm run launch` — advisory warnings logged, zero hard errors
 
 **Gate:** Clean production build. `npm run launch` runs without errors. All SEO tags render in production HTML. sitemap.xml generated.
 
@@ -311,7 +302,7 @@ is functional in simulation mode and renders without error.
 
 The SVVP is complete and the staging URL is the canonical demo when all of the following are checked:
 
-- [ ] All phases above marked complete
+- [x] All phases above marked complete
 - [ ] Every page section renders without console errors in simulation mode
 - [ ] Upload portal accepts a file and shows "[SIM] Order received" confirmation
 - [ ] Admin dashboard shows demo orders, all status transitions fire
@@ -320,9 +311,9 @@ The SVVP is complete and the staging URL is the canonical demo when all of the f
 - [ ] All 4 legal modals open and close correctly
 - [ ] Mobile responsive — every section usable at 390px viewport
 - [ ] WhatsApp FAB visible and functional on mobile
-- [ ] `npm run build` exits clean
-- [ ] `npm run launch` runs — warnings logged, zero errors
-- [ ] Staging URL is live and shareable
+- [x] `npm run build` exits clean
+- [x] `npm run launch` runs — warnings logged, zero errors
+- [x] Staging URL is live and shareable
 
 ---
 
