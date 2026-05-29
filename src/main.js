@@ -12,6 +12,8 @@ import { render as renderTestimonials                                     } from
 import { render as renderFAQ,               init as initFAQ               } from '@/modules/FAQ.js'
 import { render as renderContactEngine,     init as initContactEngine     } from '@/modules/ContactEngine.js'
 import { render as renderOrderConfirmation, init as initOrderConfirmation } from '@/modules/OrderConfirmation.js'
+import * as ConsentBanner from '@/components/ConsentBanner.js'
+import * as LegalModals   from '@/modules/LegalModals.js'
 import { render as renderFooter,            init as initFooter            } from '@/components/Footer.js'
 
 /**
@@ -38,11 +40,15 @@ function mountConfirmation() {
     renderNavbar(),
     renderOrderConfirmation(),
     renderFooter(),
+    ConsentBanner.render(),
+    LegalModals.render(),
   ].join('')
 
   initNavbar()
   initOrderConfirmation()
   initFooter()
+  ConsentBanner.init()
+  LegalModals.init()
 
   SEOEngine.applyMeta({ page: 'confirmation' })
 }
@@ -64,9 +70,9 @@ function mountCustomer() {
     renderTestimonials(),
     renderFAQ(),
     renderContactEngine(),
-    // Phase 7+ modules will be added here:
-    // renderConsentBanner(), renderLegalModals()
     renderFooter(),
+    ConsentBanner.render(),
+    LegalModals.render(),
   ].join('')
 
   // init() sequence — DOM is guaranteed written at this point
@@ -78,6 +84,8 @@ function mountCustomer() {
   initFAQ()
   initContactEngine()
   initFooter()
+  ConsentBanner.init()
+  LegalModals.init()
 
   SEOEngine.applyMeta({ page: 'home' })
 }
