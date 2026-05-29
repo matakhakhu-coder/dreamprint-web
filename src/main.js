@@ -10,6 +10,7 @@ import { render as renderGallery                                    } from '@/mo
 import { render as renderAbout                                      } from '@/components/About.js'
 import { render as renderTestimonials                               } from '@/modules/Testimonials.js'
 import { render as renderFAQ,            init as initFAQ            } from '@/modules/FAQ.js'
+import { render as renderContactEngine,  init as initContactEngine  } from '@/modules/ContactEngine.js'
 import { render as renderFooter,         init as initFooter         } from '@/components/Footer.js'
 
 /**
@@ -41,8 +42,9 @@ async function mountCustomer() {
     renderAbout(),
     renderTestimonials(),
     renderFAQ(),
-    // Phase 5+ modules will be added here:
-    // renderContactEngine(), renderConsentBanner(), renderLegalModals()
+    renderContactEngine(),
+    // Phase 6+ modules will be added here:
+    // renderConsentBanner(), renderLegalModals()
     renderFooter(),
   ].join('')
 
@@ -53,6 +55,7 @@ async function mountCustomer() {
   initProductDetail()
   initUploadPortal()
   initFAQ()
+  initContactEngine()
   initFooter()
 
   // Apply SEO meta
