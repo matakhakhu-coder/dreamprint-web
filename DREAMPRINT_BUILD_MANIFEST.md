@@ -11,13 +11,13 @@ are received, then mirror the changes into `src/core/manifest.js`.
 |-------|------|--------|
 | 0 | Substrate (Project Init, Tooling, Manifest, Flags) | **Complete** |
 | 1 | Core Layout (Navbar, Hero, Footer) | **Complete** |
-| 2 | Product Showcase (ProductShowcase, ProductDetail) | Pending |
-| 3 | Upload Portal (UploadPortal — core feature) | Pending |
-| 4 | Content Sections (HowItWorks, Gallery, About, Testimonials, FAQ) | Pending |
-| 5 | Contact & WhatsApp Engine | Pending |
-| 6 | Order Confirmation & Post-Submit Flow | Pending |
-| 7 | Compliance & POPIA Layer (ConsentBanner, LegalModals) | Pending |
-| 8 | Admin Dashboard (OrderQueue, OrderDetail, StatusEngine, MockupUploader) | Pending |
+| 2 | Product Showcase (ProductShowcase, ProductDetail) | **Complete** |
+| 3 | Upload Portal (UploadPortal — core feature) | **Complete** |
+| 4 | Content Sections (HowItWorks, Gallery, About, Testimonials, FAQ) | **Complete** |
+| 5 | Contact & WhatsApp Engine | **Complete** |
+| 6 | Order Confirmation & Post-Submit Flow | **Complete** |
+| 7 | Compliance & POPIA Layer (ConsentBanner, LegalModals) | **Complete** |
+| 8 | Admin Dashboard (OrderQueue, OrderDetail, StatusEngine, MockupUploader) | **Complete** |
 | 9 | SEO Engine & Launch Gate | Pending |
 
 ---

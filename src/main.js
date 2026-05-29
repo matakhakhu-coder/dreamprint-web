@@ -15,6 +15,7 @@ import { render as renderOrderConfirmation, init as initOrderConfirmation } from
 import * as ConsentBanner from '@/components/ConsentBanner.js'
 import * as LegalModals   from '@/modules/LegalModals.js'
 import { render as renderFooter,            init as initFooter            } from '@/components/Footer.js'
+import { render as renderAdminShell,        init as initAdminShell        } from '@/admin/AdminShell.js'
 
 /**
  * Single-pass string hydration pattern.
@@ -91,19 +92,11 @@ function mountCustomer() {
 }
 
 // ── Admin render pass ────────────────────────────────────────────────────────
-async function mountAdmin() {
-  document.getElementById('app').classList.add('hidden')
-  const admin = document.getElementById('admin')
-  admin.classList.remove('hidden')
-
-  admin.innerHTML = `
-    <div class="min-h-screen flex items-center justify-center bg-dp-navy">
-      <div class="text-center text-white px-6">
-        <h1 class="font-display text-2xl font-bold mb-2">DreamPrint Admin</h1>
-        <p class="text-white/50 text-sm">Phase 8 — dashboard shell pending</p>
-      </div>
-    </div>
-  `
+// Isolated from customer paths: no navbar, hero, compliance, or legal modals.
+function mountAdmin() {
+  const app = document.getElementById('app')
+  app.innerHTML = renderAdminShell()
+  initAdminShell()
 }
 
 // ── Bootstrap ────────────────────────────────────────────────────────────────
