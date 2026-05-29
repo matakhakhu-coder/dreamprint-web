@@ -53,3 +53,47 @@ export async function confirmSimPayment(orderId) {
   console.log(`[SIM] payment.js — payment confirmed for order ${orderId}`)
   return { success: true, orderId }
 }
+
+/**
+ * processPayment(orderId, amount) — Unified payment entry point for OrderConfirmation.
+ * Simulation: 1500ms delay, marks order PAID in localStorage, returns success.
+ * Live: builds PayFast redirect via initiatePayment() and navigates.
+ * @param {string} orderId
+ * @param {number} amount
+ * @returns {Promise<{ success: boolean, orderId: string }>}
+ */
+export async function processPayment(orderId, amount) {
+  if (FLAGS.paymentSimulated) {
+    console.log('[SIM] payment.js — processPayment called', { orderId, amount })
+    await new Promise(r => setTimeout(r, 1500))
+
+    const orders = JSON.parse(localStorage.getItem('dp_sim_orders') || '[]')
+    const idx = orders.findIndex(o => o.id === orderId)
+    if (idx !== -1) {
+      orders[idx].status  = 'PAID'
+      orders[idx].paidAt  = new Date().toISOString()
+      localStorage.setItem('dp_sim_orders', JSON.stringify(orders))
+    }
+
+    console.log(`[SIM] payment.js — order ${orderId} marked PAID in localStorage`)
+    return { success: true, orderId }
+  }
+
+  // Live — delegate to initiatePayment and redirect
+  const payload = window.dp_order_payload || {}
+  const result = await initiatePayment({
+    orderId,
+    amount,
+    customerName: payload.customerName || '',
+    email:        payload.email        || '',
+    description:  payload.product
+      ? `DreamPrint SA — ${payload.product}`
+      : 'DreamPrint SA Order',
+  })
+
+  if (result.mode === 'live' && result.redirectUrl) {
+    window.location.href = result.redirectUrl
+  }
+
+  return { success: false, orderId }
+}

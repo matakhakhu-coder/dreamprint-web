@@ -1,17 +1,18 @@
 import './style.css'
 import { SEOEngine } from '@/core/SEOEngine.js'
-import { render as renderNavbar,         init as initNavbar         } from '@/components/Navbar.js'
-import { render as renderHero,           init as initHero           } from '@/components/Hero.js'
-import { render as renderProductShowcase, init as initProductShowcase } from '@/modules/ProductShowcase.js'
-import {                                  init as initProductDetail  } from '@/modules/ProductDetail.js'
-import { render as renderUploadPortal,   init as initUploadPortal   } from '@/modules/UploadPortal.js'
-import { render as renderHowItWorks                                 } from '@/modules/HowItWorks.js'
-import { render as renderGallery                                    } from '@/modules/Gallery.js'
-import { render as renderAbout                                      } from '@/components/About.js'
-import { render as renderTestimonials                               } from '@/modules/Testimonials.js'
-import { render as renderFAQ,            init as initFAQ            } from '@/modules/FAQ.js'
-import { render as renderContactEngine,  init as initContactEngine  } from '@/modules/ContactEngine.js'
-import { render as renderFooter,         init as initFooter         } from '@/components/Footer.js'
+import { render as renderNavbar,            init as initNavbar            } from '@/components/Navbar.js'
+import { render as renderHero,              init as initHero              } from '@/components/Hero.js'
+import { render as renderProductShowcase,   init as initProductShowcase   } from '@/modules/ProductShowcase.js'
+import {                                    init as initProductDetail     } from '@/modules/ProductDetail.js'
+import { render as renderUploadPortal,      init as initUploadPortal      } from '@/modules/UploadPortal.js'
+import { render as renderHowItWorks                                       } from '@/modules/HowItWorks.js'
+import { render as renderGallery                                          } from '@/modules/Gallery.js'
+import { render as renderAbout                                            } from '@/components/About.js'
+import { render as renderTestimonials                                     } from '@/modules/Testimonials.js'
+import { render as renderFAQ,               init as initFAQ               } from '@/modules/FAQ.js'
+import { render as renderContactEngine,     init as initContactEngine     } from '@/modules/ContactEngine.js'
+import { render as renderOrderConfirmation, init as initOrderConfirmation } from '@/modules/OrderConfirmation.js'
+import { render as renderFooter,            init as initFooter            } from '@/components/Footer.js'
 
 /**
  * Single-pass string hydration pattern.
@@ -20,17 +21,37 @@ import { render as renderFooter,         init as initFooter         } from '@/co
  */
 
 // ── Route detection ──────────────────────────────────────────────────────────
-const path = window.location.pathname
+const path      = window.location.pathname
+const urlParams = new URLSearchParams(window.location.search)
+
+const isConfirmationRoute = urlParams.has('order')
 
 function isAdmin() {
   return path.startsWith('/admin')
 }
 
-// ── Customer-facing render pass ──────────────────────────────────────────────
-async function mountCustomer() {
+// ── Confirmation render pass — isolated single-page receipt view ─────────────
+function mountConfirmation() {
   const app = document.getElementById('app')
 
-  // Phase 1: single-pass string hydration
+  app.innerHTML = [
+    renderNavbar(),
+    renderOrderConfirmation(),
+    renderFooter(),
+  ].join('')
+
+  initNavbar()
+  initOrderConfirmation()
+  initFooter()
+
+  SEOEngine.applyMeta({ page: 'confirmation' })
+}
+
+// ── Customer-facing render pass ──────────────────────────────────────────────
+function mountCustomer() {
+  const app = document.getElementById('app')
+
+  // Single-pass string hydration:
   // All render() calls concatenated → one innerHTML write → all init() calls in sequence
   app.innerHTML = [
     renderNavbar(),
@@ -43,7 +64,7 @@ async function mountCustomer() {
     renderTestimonials(),
     renderFAQ(),
     renderContactEngine(),
-    // Phase 6+ modules will be added here:
+    // Phase 7+ modules will be added here:
     // renderConsentBanner(), renderLegalModals()
     renderFooter(),
   ].join('')
@@ -58,7 +79,6 @@ async function mountCustomer() {
   initContactEngine()
   initFooter()
 
-  // Apply SEO meta
   SEOEngine.applyMeta({ page: 'home' })
 }
 
@@ -81,6 +101,8 @@ async function mountAdmin() {
 // ── Bootstrap ────────────────────────────────────────────────────────────────
 if (isAdmin()) {
   mountAdmin()
+} else if (isConfirmationRoute) {
+  mountConfirmation()
 } else {
   mountCustomer()
 }
