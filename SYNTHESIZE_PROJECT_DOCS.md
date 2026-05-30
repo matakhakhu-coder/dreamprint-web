@@ -1,233 +1,307 @@
 # SYNTHESIZE_PROJECT_DOCS.md
 ## Directive: Generate the Three Foundational Project Documents
 
-You are being initialized inside a repository that already contains code.
-Your task is to audit that repository and produce three documents that will
-govern all future work on this project.
+You are being initialized inside a repository that contains strategic and
+operational documents but no source code yet. This is a pre-build state.
+Your task is to read every document present, extract all available intelligence,
+and produce three governing documents that will frame every future session
+in this repository.
 
 Do not begin writing until you have completed the full audit sequence below.
-Do not ask questions. Make defensible inferences from the code and note your
-confidence level where ambiguity exists.
+Do not ask questions. Make defensible inferences from the material and mark
+your confidence level where genuine ambiguity exists.
 
 ---
 
 ## THE THREE DOCUMENTS — WHAT THEY ARE
 
-Before you write anything, understand what you are producing:
+Understand what you are producing before you write anything. These are not
+notes or summaries. They are instruments with distinct ontological roles.
 
 **Document 1 — `CLAUDE.md` (The Law)**
-A normative document that prescribes HOW this project operates. It does not
-describe what has been built. It defines immutable rules: the architecture
-pattern, the module conventions, the collaboration protocol, the stack
-constraints. Once written, this document is consulted on every session but
-never modified during normal execution — only updated when the operator
-explicitly changes an architectural rule.
+A normative document. It prescribes HOW this project will be operated.
+It defines immutable rules: collaboration protocol, architecture constraints,
+module conventions, stack decisions, simulation/live switch behaviour, and
+the standby re-entry sequence. It does not describe what has been built —
+it governs how everything will be built. It is consulted at the start of
+every session and is only revised when the operator explicitly changes an
+architectural rule.
 
 **Document 2 — `[PROJECTNAME]_BUILD_MANIFEST.md` (The Ledger)**
-A descriptive document recording the current state of real-world facts about
-this project. It tracks what is confirmed versus what is pending: client data,
-credentials, integration endpoints, asset files, business details. It also
-carries the high-level phase status table. This document changes only when
-external reality changes — a credential arrives, a decision is confirmed,
-an account is created.
+A descriptive document. It records the current state of real-world facts:
+what is confirmed versus what is pending. Business identity, integration
+credentials, client data, asset inventory, environment variables, and
+the high-level phase status table all live here. This document changes
+only when external reality changes — a credential is confirmed, a decision
+is made, an asset arrives. Facts extracted from strategic documents that
+have not yet been operationally confirmed are marked `TBC`.
 
 **Document 3 — `[PROJECTNAME]_ROADMAP.md` (The Log)**
-A procedural document that tracks execution progress through a fixed build
-sequence. It contains a checklist of every deliverable, marked `[x]` when
-done and `[ ]` when pending. Items move in one direction only — they get
-checked off as work is verified complete. Gate criteria define what "done"
-means for each phase.
+A procedural document. It is the build execution checklist — every
+deliverable for every phase, marked `[x]` when done and `[ ]` when
+pending. Because no code exists yet, all items begin as `[ ]`. Items move
+in one direction only. Gate criteria define the observable condition that
+proves each phase is complete.
 
 ---
 
-## STEP 1 — AUDIT THE REPOSITORY
+## STEP 1 — READ THE REPOSITORY
 
-Read the following in order. Do not skip. Do not begin writing documents
-until this entire audit is complete.
+This repository contains documents, not code. Read every file present.
+Do not skip any. Do not begin writing until this entire step is complete.
 
-**Infrastructure layer:**
-- `package.json` — extract: project name, version, scripts, all dependencies
-- `vite.config.js` / `next.config.js` / `webpack.config.js` — extract: aliases, ports, build targets
-- `tailwind.config.js` — extract: custom tokens, content paths, plugins
-- `tsconfig.json` / `jsconfig.json` — extract: paths, compiler targets
-- `vercel.json` / `netlify.toml` / deployment config — extract: rewrite rules, headers, environment
+**Primary source — the strategic PDF:**
+Read the PDF blueprint document in the repository root in full.
+Extract everything: the platform concept, the product vision, the user
+personas, the proposed architecture, the technology recommendations,
+the data models, the integration requirements, the business model,
+the phasing logic, and any stated constraints or principles.
+This is the master intelligence source. Treat it as the founding document.
 
-**Data and configuration layer:**
-- Any file named `manifest.js`, `config.js`, `constants.js`, `env.js`, or similar
-- Any `.env.example` file — extract: what environment variables are required
-- Any flags or feature-toggle file — extract: what is simulated vs live
+**Operational DNA — the working protocol documents:**
+Read `COGNITIVE_DEBRIEF.md` in full.
+Extract: the collaboration protocol, the architectural patterns established
+in prior work, the render/init contract or equivalent execution model,
+the simulation/live switch architecture, the module placement rules,
+the design token system, the commit and deployment conventions.
 
-**Source structure:**
-- List every directory under `src/` (or the source root)
-- List every file in each directory — note the naming conventions
-- Read `main.js` / `index.js` / `app.js` / `_app.tsx` — extract the entry point pattern:
-  how modules are imported, how the app is initialized, what the render sequence is
+Read `FUTURE_PROJECT_BOOTSTRAP.md` in full.
+Extract: the universal operational rules, the Brain/Hands relationship
+definition, the scientific cadence protocol, the code integrity mandates,
+the telemetry standards, the initialization sequence.
 
-**Module sampling:**
-- Read 3–5 representative modules across different directories
-- Extract: what each module exports, what pattern it follows, how it handles
-  data, how it handles events, what it imports from shared utilities
+**Business facts — the source of truth document:**
+Read `SOURCE_OF_TRUTH.md` in full.
+Extract: every confirmed business fact present — names, domains, contacts,
+credentials, accounts, decisions, assets. Note explicitly which fields are
+confirmed with real values and which are stated as pending or unknown.
 
-**Existing documentation:**
-- Read any existing `README.md`, `CLAUDE.md`, or similar docs
-- Note what is already documented versus what must be inferred
+**Environment configuration:**
+Read `.claude/settings.local.json`.
+Extract: any permissions, tool configurations, or environment constraints
+already established for this project's Claude environment.
 
 **Git history:**
-- Run `git log --oneline -20` — extract: commit cadence, naming conventions,
-  what phases have been delivered
-- Run `git status` — note any uncommitted changes
+Run `git log --oneline` — extract: what commits exist, what has already
+been established.
+Run `git status` — note any uncommitted files.
 
 ---
 
-## STEP 2 — BUILD YOUR INFERENCES
+## STEP 2 — SYNTHESIZE YOUR UNDERSTANDING
 
-After the audit, answer these questions internally before writing:
+After reading everything, construct these answers internally before writing
+a single document:
 
-1. What is the **project name** and what does it do in one sentence?
-2. What is the **stack** — framework, styling, build tool, backend?
-3. What is the **module architecture pattern** — how are files organized and
-   why? What rule determines whether something is a component vs a module vs a utility?
-4. What is the **render/data/init lifecycle** — how does data flow from config
-   to UI? How are side effects isolated from pure rendering?
-5. What **simulation or environment pattern** exists — are there flags, modes,
-   or environment variables that control live vs fake behaviour?
-6. What **phases of work** are apparent from the git history and file structure —
-   what has been built, what is clearly intended but not yet built?
-7. What **client or business data** is present vs missing — what fields are null,
-   placeholder, or marked TBC?
-8. What **conventions** are consistent across the codebase — naming, file
-   structure, CSS approach, event handling, state management?
+**About the platform:**
+1. What is the project name and the precise one-sentence definition of what it does?
+2. Who is the primary user? Who is the secondary user? What problem does each have?
+3. What is the core value proposition — the thing that must work before everything else matters?
+4. What are the stated technical constraints or non-negotiables from the blueprint?
+
+**About the architecture:**
+5. What stack is recommended or decided — frontend framework, styling, build tool, backend, database?
+6. What is the module/component architecture pattern that fits this project's domain?
+   Apply the operational DNA from `COGNITIVE_DEBRIEF.md` — adapt it to this project's context.
+7. What external integrations are required — APIs, payment systems, auth providers, storage services?
+8. What is the simulation/live switch strategy — which integrations should start simulated,
+   and what credential resolves each one to live?
+9. What is the single source of truth data structure — what central config object holds all
+   business facts and integration credentials?
+
+**About the build sequence:**
+10. What are the natural phases of this build — what must exist before what?
+    Phase 0 is always substrate (tooling, config, data layer).
+    Phase N is always SEO and launch gate.
+    Derive the middle phases from the platform's feature set as described in the blueprint.
+11. What is the SVVP — what does the complete platform look like in simulation mode?
+    What does a stakeholder need to be able to do on the staging URL to consider it a demo?
+
+**About the ledger:**
+12. From `SOURCE_OF_TRUTH.md` and the PDF, what is confirmed? What is TBC?
+    List every field that belongs in the manifest and its current status.
 
 ---
 
 ## STEP 3 — WRITE `CLAUDE.md`
 
-Produce a `CLAUDE.md` at the repository root with these sections:
+Produce `CLAUDE.md` at the repository root. Write every section for this
+specific project — do not copy generic text. Use the actual project name,
+actual stack decisions, actual module names where they can be determined.
+
+Include these sections:
 
 **Collaboration Protocol**
-Four rules the agent must follow before executing any directive:
 Audit → Weigh → Flag Deficits → Proceed.
-Write these specifically for this project's concerns.
+Write each rule with this project's specific concerns in mind.
+What are the most likely audit failures for this domain?
+What deficit types are most probable given the integration requirements?
 
 **Project Identity**
-A table: Name, Client/Owner, Domain, Concept (one sentence), Stack, Backend,
-Key Constraint, Anchor document.
+Table: Name, Owner/Client, Domain, Concept (one sentence), Stack,
+Backend/Database, Key Constraint, Anchor Document.
 
-**Core Architectural Pattern**
-The single most important rule governing how this codebase is structured.
-For a render/init pattern, explain it. For a component/service pattern,
-explain it. Make the failure mode explicit — what breaks silently if this
-rule is violated.
+**SVVP Definition**
+One paragraph defining what the System Viable Viable Product means for
+this specific platform — what the complete simulation-mode system delivers,
+and how the graduation mechanism works.
 
-**Module Placement Rules**
-A table mapping: Type of code → Directory → Examples from the actual codebase.
-
-**Data Layer**
-Where does the single source of truth live? What is the object name? What
-must never be hardcoded in components?
-
-**Simulation / Environment Architecture** (if applicable)
-How does the switch from simulated to live operation work? What file controls it?
-What is the only change required to graduate a dependency?
+**Phase Status**
+A table listing every phase (derived from your Step 2 synthesis) with
+Phase number, Name, and Status. At project start, all phases are Pending.
 
 **Deployment State**
-Current staging URL, production domain, CI/CD chain, current environment mode.
+Staging URL (TBC if not yet created), production domain, CI/CD chain
+(note if not yet configured), current environment mode.
+
+**Architecture Constraints**
+The core architectural rule for this codebase. Describe the execution
+lifecycle — how data flows from the central config to the UI, how side
+effects are isolated, what the failure mode is if the pattern is broken.
+Apply the render/init contract or its equivalent for the chosen stack.
+
+**Module Placement Rules**
+Table: Code type → Directory → Examples (use anticipated module names
+from the blueprint's feature set).
+
+**Simulation / Live Switch Architecture**
+The adapter pattern for each external dependency.
+List every integration, its adapter file path, what flag controls it,
+and what credential resolves it to live.
 
 **Standby Protocol**
-What must the agent do at the start of every new session to re-orient itself.
-List the files to read, in order.
+Numbered list: what the agent reads, in order, at the start of every
+session to re-orient. Include file names specific to this project.
 
 ---
 
 ## STEP 4 — WRITE `[PROJECTNAME]_BUILD_MANIFEST.md`
 
-Name this file using the project name in uppercase with underscores:
-e.g., `WELLNESS_METRICS_BUILD_MANIFEST.md`.
+Name this file with the project name in uppercase with underscores.
+Derive the project name from the PDF or `SOURCE_OF_TRUTH.md`.
 
-Produce it with these sections:
+Include these sections:
 
 **Phase Status Table**
-A table of every identifiable build phase with columns: Phase number, Name,
-Status. Mark phases as `**Complete**`, `**In Progress**`, or `Pending` based
-on what you found in the git history and file structure. Be honest — if you
-are inferring completion from file existence rather than verified functionality,
-note it.
+Table: Phase number | Name | Status.
+All phases Pending at project start.
+Mirror the phase table from `CLAUDE.md` exactly — these two must match.
 
 **Business / Brand Identity**
-Every piece of client-facing identity data present in the config:
-name, legal name, tagline, domain, registration number, etc.
-Mark each field as confirmed (has a real value) or `TBC` (null, placeholder,
-or missing). Do not invent values.
+Every identity field: legal name, trading name, tagline, domain, registration
+number, VAT number, etc. Source values from `SOURCE_OF_TRUTH.md`.
+Mark each: confirmed value, or `TBC — [what is needed]`.
 
 **Contact & Social**
-Every contact field and social handle. Mark confirmed vs TBC.
+Every contact and social field. Mark confirmed vs TBC.
 
-**Integration Endpoints & Credentials**
-Every external service the project connects to. For each: service name,
-what credential is needed, where it lives in the config, current status
-(null / placeholder / confirmed). Do not log actual secrets — log their
-config key names only.
+**Product / Service Catalogue**
+From the blueprint: every product or service offering, its pricing model,
+its key attributes. Mark confirmed vs TBC per field.
 
-**Feature Flags / Simulation Switches**
-Every flag that controls live vs simulated behaviour. For each: flag name,
-current value, what resolves it to live.
+**Integration Registry**
+Every external service required. For each:
+- Service name and purpose
+- Credential(s) needed (key name only — never log secrets)
+- Config key path where it will live
+- Current status: `null` / `TBC` / confirmed
+
+**Feature Flags**
+Every simulation switch that will be needed. For each:
+- Flag name (follow the `xyzSimulated: true` convention)
+- What it controls
+- What resolves it to `false` (live)
+
+**Asset Inventory**
+Every static asset the platform requires: logo files, photography, icons,
+brand fonts, demo content. Mark present vs TBC.
 
 **Outstanding Items Before Production**
-A numbered list of every item that must be resolved before the project can
-be promoted to production. Derive this from all the TBC fields and pending
-flags above.
+Numbered list: every unresolved item from the sections above.
+This is the client data collection checklist.
 
 ---
 
 ## STEP 5 — WRITE `[PROJECTNAME]_ROADMAP.md`
 
-Name this file using the same project name prefix.
+Use the same project name prefix as the manifest.
 
-Produce it with these sections:
+Include these sections:
 
 **Header**
-One paragraph explaining what this document is: the build execution checklist,
-how items are marked complete, what the gate criteria mean.
+One paragraph: what this document is, how `[x]` is earned (only by verified
+functional delivery, not file existence), what gate criteria mean.
 
-**One section per phase**
-For each phase identified in the manifest:
-- Phase name and number as a heading
-- A brief description of what this phase delivers
-- A checklist of specific deliverables as `[ ]` or `[x]` items
-- Sub-items under each deliverable where meaningful
-- A **Gate** line at the end of each phase: a single sentence defining
-  the observable condition that proves this phase is complete
+**Phase 0 — Substrate** (always first)
+Deliverables: project scaffolding, tooling configuration, central config/data
+file, flags file, integration adapter stubs, entry point, CI/CD connection,
+staging URL live.
+Gate: `npm run dev` (or equivalent) runs clean. Staging URL is live.
+All items `[ ]`.
 
-Mark items `[x]` only when you have confirmed evidence from the codebase
-that the deliverable exists and follows the project's conventions.
-Mark items `[ ]` when they are absent, incomplete, or could not be confirmed.
+**Phases 1 through N** (derived from the blueprint's feature set)
+For each phase:
+- Heading with phase number and name
+- One sentence describing what this phase delivers to the end user
+- Checklist of specific, testable deliverables as `[ ]` items
+- Sub-items where a deliverable has meaningful sub-components
+- **Gate:** one sentence — the observable condition that proves this phase is done
 
-**SVVP / Staging Checklist** (if applicable)
-A final checklist of conditions required before the staging URL is considered
-a complete demo — this is separate from production readiness.
+Derive phases from the blueprint's feature architecture. Order them by:
+dependency (what must exist before what), user-facing value (core features
+before supporting features), and risk (highest-uncertainty integrations
+scaffolded early in simulation mode).
+
+**Phase N — SEO & Launch Gate** (always last)
+Deliverables: meta tags, structured data, robots.txt, sitemap.xml,
+launch validation script, production build verification.
+Gate: `npm run build` exits clean. Launch script runs with zero errors.
+
+**SVVP Staging Checklist**
+Conditions for the staging URL to be considered a complete stakeholder demo.
+All `[ ]` at project start.
+
+**Switch Flip Log**
+Table: Date | Switch | Flag key set to | Confirmed by.
+All rows empty at project start — filled as credentials arrive.
 
 **Pre-Production Final Gate**
-A checklist of every step required before `vercel --prod` or equivalent
-production deployment command.
+Checklist of every step before production deployment.
+All `[ ]` at project start.
 
 ---
 
-## STEP 6 — DELIVER
+## STEP 6 — VALIDATE CONSISTENCY
 
-After writing all three documents:
+Before committing, verify:
 
-1. Run `git status` to confirm what you have created
-2. Stage and commit all three files:
+- The phase table in `CLAUDE.md` matches the phase table in the manifest exactly
+- The phase headings in the roadmap match both tables exactly
+- Every integration listed in the manifest has a corresponding flag in the
+  flags section and a corresponding adapter path in `CLAUDE.md`
+- Every TBC field in the manifest appears in the Outstanding Items list
+- No confirmed value in `SOURCE_OF_TRUTH.md` is marked TBC in the manifest
+- No invented value appears anywhere — only confirmed facts or explicit TBC markers
+
+---
+
+## STEP 7 — DELIVER
+
+After writing and validating all three documents:
+
+1. Run `git status` to confirm the three new files
+2. Commit:
    ```
    git add CLAUDE.md [PROJECT]_BUILD_MANIFEST.md [PROJECT]_ROADMAP.md
-   git commit -m "docs: synthesize foundational project documents (CLAUDE.md, manifest, roadmap)"
+   git commit -m "docs: synthesize foundational project documents from strategic blueprint"
    ```
-3. Report to the operator with:
-   - What you found in the audit (key observations, surprises, gaps)
-   - What inferences you made with lower confidence (and why)
-   - The current phase status as you have assessed it
-   - The count of TBC items in the manifest
-   - What you believe the next directive should address
+3. Report to the operator:
+   - The project name and one-sentence platform definition as you have understood it
+   - The phase count and phase names in build sequence order
+   - The count of confirmed fields vs TBC fields in the manifest
+   - The integrations requiring simulation adapters, listed by name
+   - Any material where you had low confidence and why
+   - The single most important thing you believe Phase 1 must deliver
 
 Close your report with:
 ```
@@ -239,14 +313,19 @@ Law → Ledger → Log. System ready.
 
 ## CONSTRAINTS
 
-- Write every document as if the project will be maintained for 2+ years by
-  agents who have never seen this codebase before. Precision over brevity.
-- Do not fabricate values for TBC fields. A confirmed null is more useful
-  than a plausible invention.
-- Do not recommend changes to the codebase in these documents. These documents
-  describe and govern — they do not propose.
-- If you cannot confidently determine something from the audit, say so explicitly
-  in the document with a note like: `[Inferred from file structure — verify]`
-- The three documents must be internally consistent. Phase status in the manifest
-  must match the roadmap checkboxes. Architecture rules in CLAUDE.md must match
-  the patterns visible in the codebase.
+- Source every fact from the documents you read. Do not invent business names,
+  domain names, pricing, or contact details. If it is not in the source material,
+  it is TBC.
+- Apply the operational patterns from `COGNITIVE_DEBRIEF.md` and
+  `FUTURE_PROJECT_BOOTSTRAP.md` — these establish how this operator builds
+  systems. The new project inherits those patterns unless the blueprint
+  explicitly requires something different.
+- Write every document at the precision level required for a 2-year maintenance
+  horizon — an agent who has never seen this repo must be fully operational
+  after reading `CLAUDE.md` alone.
+- The three documents must be internally consistent. Any inconsistency between
+  them will create confusion in future sessions.
+- Do not recommend changes to the strategic documents. Your role here is
+  synthesis and structuring, not critique.
+- Mark every inference with `[Inferred — verify with operator]` if it is not
+  explicitly stated in the source material.
